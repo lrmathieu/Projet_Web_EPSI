@@ -4,18 +4,22 @@
 	<groupId>fr.epsi</groupId>
 	<!-- artifactId correspond au nom de votre application, n'hésitez pas à 
 		changer la valeur par défaut -->
-	<artifactId>mvc</artifactId>
+	<artifactId>projet_web_epsi</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
 	<!-- précisez le nom et l'email de chaque membre de votre groupe -->
 	<developers>
 		<developer>
-			<name>VOTRE_NOM</name>
+			<name>BAH</name>
 			<email>VOTRE_EMAIL</email>
 		</developer>
 		<developer>
-			<name>VOTRE_NOM</name>
+			<name>MATHIEU</name>
+			<email>VOTRE_EMAIL</email>
+		</developer>
+		<developer>
+			<name>VERRE</name>
 			<email>VOTRE_EMAIL</email>
 		</developer>
 	</developers>
