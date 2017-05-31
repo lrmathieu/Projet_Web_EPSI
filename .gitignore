@@ -8,11 +8,8 @@ target
 
 bin/
 
-<<<<<<< HEAD
 src/main/webapp/WEB-INF/resources.xml
 
-=======
->>>>>>> indexScreen
 # fichiers Itellij IDEA a ignorer
 .idea
 *.iml
