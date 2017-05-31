@@ -6,6 +6,8 @@ target
 .project
 .settings
 
+bin/
+
 # fichiers Itellij IDEA a ignorer
 .idea
 *.iml
