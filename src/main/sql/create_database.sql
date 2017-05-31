@@ -1,6 +1,6 @@
-CREATE DATABASE mypersonalbankweb CHARACTER SET 'utf8';
+CREATE DATABASE mypersonnalbankweb CHARACTER SET 'utf8';
 
-use mypersonalbankweb;
+use mypersonnalbankweb;
 
 CREATE TABLE IF NOT EXISTS Account (
   id int(11) NOT NULL AUTO_INCREMENT,
