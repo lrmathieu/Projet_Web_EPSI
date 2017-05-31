@@ -8,6 +8,8 @@ target
 
 bin/
 
+src/main/webapp/WEB-INF/persistence.xml
+
 # fichiers Itellij IDEA a ignorer
 .idea
 *.iml
