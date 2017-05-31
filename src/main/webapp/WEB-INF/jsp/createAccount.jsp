@@ -7,7 +7,9 @@
 <title>Création d'un compte</title>
 </head>
 <body>
-
+<header>
+<h2>Créer un compte</h2>
+</header>
 <c:choose>
 	<c:when test="${error eq 'invalid.amount.format'}">
 		Le solde initial doit être un nombre&nbsp;!
@@ -19,12 +21,12 @@
 
 <form action="<c:url value="/accounts"/>" method="POST">
 	<label>Nom du compte</label>
-	<input name="accountName" value="<c:out value="${param['accountName']}"/>"><br>
+	<input name="accountName" value="<c:out value="${param['accountName']}"/>"><br><br>
 	<label>Numéro du compte</label>
-	<input name="accountNumber" value="<c:out value="${param['accountNumber']}"/>"><br>
+	<input name="accountNumber" value="<c:out value="${param['accountNumber']}"/>"><br><br>
 	<label>Solde initial</label>
 	<input name="accountBalanceInteger" value="<c:out value="${param['accountBalanceInteger']}"/>">,
-	<input name="accountBalanceFraction" size="2" maxlength="2" value="<c:out value="${param['accountBalanceFraction']}"/>"><br>
+	<input name="accountBalanceFraction" size="2" maxlength="2" value="<c:out value="${param['accountBalanceFraction']}"/>"><br><br>
 	<button type="submit">Créer</button>
 </form>
 

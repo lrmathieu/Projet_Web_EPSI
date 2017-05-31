@@ -8,17 +8,32 @@
 <title>Mon compte</title>
 </head>
 <body>
+	<h2>Details du compte</h2>
 
 	<section>
-		<c:out value="${account.name}"/>&nbsp;: 
+		<c:out value="${account.name}"/><br/><br/>
+		
+	</section>
+	<table>
+		<tr>
+			<th>Date</th>
+			<th>Libellé</th>
+			<th>Type de transaction</th>
+			<th>Montant</th>
+		</tr>
+		<tr>
+			<td colspan="3">Total :</td>
+			<td><c:out value=""/>&nbsp; 
 		<fmt:formatNumber type="currency" 
 		value="${account.balanceAmount.valueWithFractionDigits}" 
-		currencySymbol="${account.balanceAmount.currency.symbol}"/>
-	</section>
-	
+		currencySymbol="${account.balanceAmount.currency.symbol}"/></td>
+		</tr>
+	</table>
 	<nav>
 		<ul>
 			<li><a href="<c:url value="/"/>">Créer un nouveau compte</a></li>
+			<li><a href="<c:url value="/transactions"/>">Saisir une recette</a></li>
+			<li><a href="<c:url value="/depenses"/>">Saisir une depense</a></li>
 		</ul>
 	</nav>
 
