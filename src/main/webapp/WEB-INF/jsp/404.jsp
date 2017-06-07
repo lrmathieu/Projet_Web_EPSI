@@ -10,7 +10,7 @@
 	<p>Désolé, la page n'existe plus...</p>
 	<nav>
 		<ul>
-			<li><a href="<c:url value="/index.html"/>">Retour à l'accueil</a></li>
+			<li><a href="<c:url value="/index.jsp"/>">Retour à l'accueil</a></li>
 		</ul>
 	</nav>
 
