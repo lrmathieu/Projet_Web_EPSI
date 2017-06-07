@@ -14,12 +14,18 @@
 		<c:out value="${account.name}"/><br/><br/>
 		
 	</section>
-	<table>
+	<table border="1">
 		<tr>
 			<th>Date</th>
 			<th>Libellé</th>
 			<th>Type de transaction</th>
 			<th>Montant</th>
+		</tr>
+			<tr>
+			<td></td>
+			<td><c:out value="${transaction.label}"/></td>
+			<td><c:out value="${transaction.transactionType}"/></td>
+			<td><c:out value="${transaction.recipe}"/></td>
 		</tr>
 		<tr>
 			<td colspan="3">Total :</td>

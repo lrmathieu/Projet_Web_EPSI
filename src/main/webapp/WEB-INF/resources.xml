@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tomee>
-<Resource id="accountDataSource" type="javax.sql.DataSource">
+<Resource id="bankDataSource" type="javax.sql.DataSource">
+
   JdbcDriver com.mysql.jdbc.Driver
   JdbcUrl jdbc:mysql://localhost:3306/mypersonnalbankweb
   UserName root
   Password root
-  JtaManaged true
+  JtaManaged true  
 </Resource>
 </tomee>

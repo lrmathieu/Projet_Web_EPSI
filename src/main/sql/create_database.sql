@@ -9,3 +9,11 @@ CREATE TABLE IF NOT EXISTS Account (
   value int(11) NOT NULL,
   PRIMARY KEY (id)
 ) engine=innodb;
+
+CREATE TABLE IF NOT EXISTS Transaction (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  label varchar(200) NOT NULL,
+  transactionType varchar(200) NOT NULL,
+  recipe int(11) NOT NULL,
+  PRIMARY KEY (id)
+) engine=innodb;
