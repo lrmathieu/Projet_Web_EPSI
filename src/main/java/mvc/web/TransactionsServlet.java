@@ -36,7 +36,7 @@ private static final long serialVersionUID = 1L;
 			//Account account = accountManager.save(req.getParameter("accountName"), req.getParameter("accountNumber"), amount)
 ;
 			Transaction transaction =  transactionManager.saveTransaction(libelle, transactType, recipe);
-			resp.sendRedirect(req.getContextPath() + "/account?accountNumber=555ooo");
+			resp.sendRedirect(req.getContextPath() + "/displayTransactions");
 			
 			//} catch (NumberFormatException nfe) {
 			//req.setAttribute("error", "invalid.amount.format");88

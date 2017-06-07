@@ -1,7 +1,10 @@
 package mvc.model;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 @Stateless
@@ -18,6 +21,15 @@ public class TransactionManager {
 			entityManager.persist(newTransaction);
 			return newTransaction;
 		}
+
+	public List<Transaction> getListTransactions() throws TransactionDoesNotExistException{
+		try{
+			return entityManager.createQuery("SELECT t FROM Transaction t", Transaction.class).getResultList();
+			
+		}catch(NoResultException e){
+			throw new TransactionDoesNotExistException();
+		}	
+	}
 	
 	
 	/*public Account getByNumber(String accountNumber) throws AccountDoesNotExistException {
