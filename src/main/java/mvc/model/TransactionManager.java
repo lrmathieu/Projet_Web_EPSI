@@ -12,7 +12,7 @@ public class TransactionManager {
 	@PersistenceContext(unitName="bankPersistenceUnit")
 	private EntityManager entityManager;
 	
-	public Transaction saveTransaction(String libbele, String transactionType, String recipe) {//throws AccountAlreadyExistingException {
+	public Transaction saveTransaction(String libbele, String transactionType, Amount recipe) {//throws AccountAlreadyExistingException {
 		//try {
 			//getByNumber(accountNumber);
 		//	throw new AccountAlreadyExistingException();

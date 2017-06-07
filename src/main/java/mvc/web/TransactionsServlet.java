@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import mvc.model.Amount;
 import mvc.model.Transaction;
 import mvc.model.TransactionManager;
 @WebServlet("/transactions")
@@ -29,14 +30,16 @@ private static final long serialVersionUID = 1L;
 		req.setCharacterEncoding("UTF-8");
 		
 		//try {			
-			String recipe =req.getParameter("recipe");
+			String transactionBalanceInteger =req.getParameter("transactionBalanceInteger");
+			String transationBalanceFraction = req.getParameter("transationBalanceFraction");
 			String libelle = req.getParameter("libbele");
 			String transactType = req.getParameter("transactionType");
-			//AmountTransact amounttt =new AmountTransact(transactionBalanceInteger, transationBalanceFraction);
+			Amount amountTrasact =new Amount(transactionBalanceInteger, transationBalanceFraction);
 			//Account account = accountManager.save(req.getParameter("accountName"), req.getParameter("accountNumber"), amount)
-;
-			Transaction transaction =  transactionManager.saveTransaction(libelle, transactType, recipe);
+
+			Transaction transaction =  transactionManager.saveTransaction(libelle, transactType, amountTrasact);
 			resp.sendRedirect(req.getContextPath() + "/displayTransactions");
+
 			
 			//} catch (NumberFormatException nfe) {
 			//req.setAttribute("error", "invalid.amount.format");88

@@ -30,10 +30,11 @@
 	<!-- <label>Date</label>
 	<input type="date" name="transactionDate"><br><br> -->
 	<label>Montant de la recette</label>
-	<input name="recipe" value="<c:out value="${param['recipe']}"/>"><br><br>
-	<%-- <input name="transactionBalanceInteger" value="<c:out value="${param['transactionBalanceInteger']}"/>">,
-	<input name="transationBalanceFraction" size="2" maxlength="2" value="<c:out value="${param['transationBalanceFraction']}"/>"><br><br>
-	 --%>
+	<%-- <input name="recipe" value="<c:out value="${param['recipe']}"/>"><br><br> --%>
+	<input name="transactionBalanceInteger" value="<c:out value="${param['transactionBalanceInteger']}"/>">,
+	<input name="transationBalanceFraction" size="2" maxlength="2"> €<br/><br/>
+	<%-- value="<c:out value="${param['transationBalanceFraction']}" --%>
+	
 	<button type="submit">Ajouter</button>
 </form>
 

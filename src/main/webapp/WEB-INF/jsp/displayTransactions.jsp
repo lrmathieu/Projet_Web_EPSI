@@ -14,7 +14,7 @@
 			<th>Date</th>
 			<th>Libellé</th>
 			<th>Type de transaction</th>
-			<th>Montant</th>
+			<th>Montant en EUR</th>
 		</tr>
 		<c:choose>
 			<c:when test="${ empty transactionsList }">

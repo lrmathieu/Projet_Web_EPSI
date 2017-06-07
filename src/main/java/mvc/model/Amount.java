@@ -29,5 +29,9 @@ public class Amount {
 	public Currency getCurrency() {
 		return DEFAULT_CURRENCY;
 	}
+	@Override
+	public String toString(){
+		return String.valueOf(this.getValueWithFractionDigits());
+	}
 
 }

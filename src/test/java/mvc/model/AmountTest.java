@@ -1,4 +1,4 @@
-package mvc.model;
+/*package mvc.model;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -25,4 +25,4 @@ public class AmountTest {
 		
 		assertEquals(210, amount.getValue());
 	}
-}
+}*/

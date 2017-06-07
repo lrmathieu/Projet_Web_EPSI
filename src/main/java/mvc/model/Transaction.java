@@ -14,9 +14,9 @@ public class Transaction{
 	private String transactionType;
 	private String label;
 	
-	//@Embedded
-	private String recipe;
-	public Transaction(String label, String transactionType, String recipe) {
+	@Embedded
+	private Amount recipe;
+	public Transaction(String label, String transactionType, Amount recipe) {
 		this.label=label;
 		this.transactionType=transactionType;
 		this.recipe=recipe;
@@ -44,10 +44,10 @@ public class Transaction{
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getRecipe() {
+	public Amount getRecipe() {
 		return recipe;
 	}
-	public void setRecipe(String recipe) {
+	public void setRecipe(Amount recipe) {
 		this.recipe = recipe;
 	}
 	

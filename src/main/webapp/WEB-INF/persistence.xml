@@ -8,7 +8,7 @@
     <jta-data-source>bankDataSource</jta-data-source>
     <class>mvc.model.Account</class>
     <class>mvc.model.Amount</class>
-    <!-- <class>mvc.model.AmountTransact</class> -->
+  <!--   <class>mvc.model.AmountTransact</class> -->
     <class>mvc.model.Transaction</class>
     <properties>
     
