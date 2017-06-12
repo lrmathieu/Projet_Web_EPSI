@@ -36,7 +36,7 @@ private static final long serialVersionUID = 1L;
 			String transactType = req.getParameter("transactionType");
 			Amount amountTrasact =new Amount(transactionBalanceInteger, transationBalanceFraction);
 			//Account account = accountManager.save(req.getParameter("accountName"), req.getParameter("accountNumber"), amount)
-
+			//String accountNumber = req.getParameter("accountNumber");
 			Transaction transaction =  transactionManager.saveTransaction(libelle, transactType, amountTrasact);
 			resp.sendRedirect(req.getContextPath() + "/displayTransactions");
 

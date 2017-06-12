@@ -14,6 +14,8 @@ CREATE TABLE IF NOT EXISTS Transaction (
   id int(11) NOT NULL AUTO_INCREMENT,
   label varchar(200) NOT NULL,
   transactionType varchar(200) NOT NULL,
-  recipe int(11) NOT NULL,
-  PRIMARY KEY (id)
+  value int(11) NOT NULL,
+  idAccount int(11) NOT NULL,
+  PRIMARY KEY (id),
+  CONSTRAINT FK_TRANS_ACC FOREIGN KEY(idAccount) REFERENCES Account(id)
 ) engine=innodb;

@@ -21,25 +21,34 @@
 			<th>Type de transaction</th>
 			<th>Montant</th>
 		</tr>
-			<tr>
-			<td></td>
-			<td><c:out value="${transaction.label}"/></td>
-			<td><c:out value="${transaction.transactionType}"/></td>
-			<td><c:out value="${transaction.recipe}"/></td>
-		</tr>
+		<c:choose>
+			<c:when test="${ empty transactionsListByAccount }">
+				<tr>
+					<td colspan="4">Aucune opération</td>
+				</tr>
+			</c:when>
+			<c:when test="${ not empty transactionsListByAccount }">
+				<c:forEach items="${ transactionsListByAccount }" var="t">
+					<tr>
+						<td></td>
+						<td>${ t.label }<br>
+						<td>${ t.transactionType }</td>
+						<td>${ t.value }</td>
+					</tr>
+				</c:forEach>
+			</c:when>
+		</c:choose>
 		<tr>
 			<td colspan="3">Total :</td>
-			<td><c:out value=""/>&nbsp; 
-		<fmt:formatNumber type="currency" 
-		value="${account.balanceAmount.valueWithFractionDigits}" 
-		currencySymbol="${account.balanceAmount.currency.symbol}"/></td>
+			<td><c:out value="" />&nbsp; <fmt:formatNumber type="currency"
+					value="${account.balanceAmount.valueWithFractionDigits}"
+					currencySymbol="${account.balanceAmount.currency.symbol}" /></td>
 		</tr>
 	</table>
 	<nav>
 		<ul>
-			<li><a href="<c:url value="/"/>">Créer un nouveau compte</a></li>
-			<li><a href="<c:url value="/transactions"/>">Saisir une recette</a></li>
-			<li><a href="<c:url value="/depenses"/>">Saisir une depense</a></li>
+			<li><a href="<c:url value="/home"/>">Retour à l'acceuil</a></li>
+			<li><a href="<c:url value="/transactions"/>">Saisir une transaction</a></li>
 		</ul>
 	</nav>
 

@@ -12,12 +12,18 @@ public class TransactionManager {
 	@PersistenceContext(unitName="bankPersistenceUnit")
 	private EntityManager entityManager;
 	
-	public Transaction saveTransaction(String libbele, String transactionType, Amount recipe) {//throws AccountAlreadyExistingException {
+	public Transaction saveTransaction(String label, String type, Amount value) {//throws AccountAlreadyExistingException {
 		//try {
 			//getByNumber(accountNumber);
 		//	throw new AccountAlreadyExistingException();
 		//} catch (AccountDoesNotExistException e) {}
-			Transaction newTransaction = new Transaction(libbele, transactionType, recipe);
+		
+		//REQUETE POUR RECUPERER NUMERO DE COMPTE POUR TRANSACTION
+			Account selectedAccount = entityManager.createQuery("select a from Account a where a.id = :id", Account.class)
+			.setParameter("id", 1)
+			.getSingleResult();
+			Transaction newTransaction = new Transaction(label, type, value);
+			newTransaction.setAccount(selectedAccount);
 			entityManager.persist(newTransaction);
 			return newTransaction;
 		}
@@ -30,15 +36,18 @@ public class TransactionManager {
 			throw new TransactionDoesNotExistException();
 		}	
 	}
+
+	public List<Transaction> getListTransactionsByAccount(String accountNumber) throws TransactionDoesNotExistException {
+		try{
+			Account selectedAccount = entityManager.createQuery("select a from Account a where a.number = :accountNumber", Account.class)
+			.setParameter("accountNumber", accountNumber)
+			.getSingleResult();
+			return entityManager.createQuery("select t from Transaction t where t.account = :account", Transaction.class)
+			.setParameter("account", selectedAccount)
+			.getResultList();
+		}catch(NoResultException e){
+			throw new TransactionDoesNotExistException();
+		}		
+	}
 	
-	
-	/*public Account getByNumber(String accountNumber) throws AccountDoesNotExistException {
-		try {
-			return entityManager.createQuery("select a from Account a where a.number = :number", Account.class)
-					.setParameter("number", accountNumber)
-					.getSingleResult();
-		} catch (NoResultException e) {
-			throw new AccountDoesNotExistException();
-		}
-	}*/
 }

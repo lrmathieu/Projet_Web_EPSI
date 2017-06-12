@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Transaction{
@@ -15,11 +17,19 @@ public class Transaction{
 	private String label;
 	
 	@Embedded
-	private Amount recipe;
-	public Transaction(String label, String transactionType, Amount recipe) {
+	private Amount value;
+	@ManyToOne
+	@JoinColumn(name="idAccount")
+	private Account account;
+	
+	public Transaction(){
+		
+	}
+	
+	public Transaction(String label, String transactionType, Amount value) {
 		this.label=label;
 		this.transactionType=transactionType;
-		this.recipe=recipe;
+		this.value=value;
 	}
 	public String getTransactionType() {
 		return transactionType;
@@ -44,12 +54,18 @@ public class Transaction{
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Amount getRecipe() {
-		return recipe;
+	public Amount getValue() {
+		return value;
 	}
-	public void setRecipe(Amount recipe) {
-		this.recipe = recipe;
+	public void setValue(Amount value) {
+		this.value = value;
 	}
 	
+	public Account getAccount(){
+		return this.account;
+	}
+	public void setAccount(Account account){
+		this.account = account;
+	}
 
 }

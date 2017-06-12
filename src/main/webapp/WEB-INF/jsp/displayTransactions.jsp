@@ -28,7 +28,7 @@
 						<td></td>
 						<td>${ t.label }<br>
 						<td>${ t.transactionType }</td>
-						<td>${ t.recipe }</td>
+						<td>${ t.value }</td>
 					</tr>
 				</c:forEach>
 			</c:when>

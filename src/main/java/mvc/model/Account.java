@@ -1,10 +1,13 @@
 package mvc.model;
 
+import java.util.List;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Account {
@@ -16,6 +19,12 @@ public class Account {
 	private String number;
 	@Embedded
 	private Amount balance;
+	@OneToMany
+	private List<Transaction> transactions;
+	
+	public Account(){
+			
+	}
 
 	public Account(String name, String number, Amount amount) {
 		this.name = name;

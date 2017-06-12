@@ -19,7 +19,7 @@
 	</c:when>
 </c:choose>
 
-<form action="<c:url value="/accounts"/>" method="POST">
+<form action="<c:url value="/createAccount"/>" method="POST">
 	<label>Nom du compte</label>
 	<input name="accountName" value="<c:out value="${param['accountName']}"/>"><br><br>
 	<label>Numéro du compte</label>

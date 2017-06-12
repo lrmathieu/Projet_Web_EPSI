@@ -1,5 +1,7 @@
 package mvc.model;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -41,5 +43,13 @@ public class AccountManager {
 		} catch (NoResultException e) {
 			throw new AccountDoesNotExistException();
 		}
+	}
+
+	public List<Account> getListAccounts() throws AccountDoesNotExistException {
+		try{
+			return entityManager.createQuery("SELECT a FROM Account a", Account.class).getResultList();
+		}catch(NoResultException e){
+			throw new AccountDoesNotExistException();
+		}		
 	}
 }

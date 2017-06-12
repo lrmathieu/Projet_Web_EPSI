@@ -11,7 +11,7 @@
 
 	<nav>
 		<ul>
-			<li><a href="<c:url value="/createAccount"/>">Créer un nouveau compte</a></li>
+			<li><a href="<c:url value="/accounts"/>">Créer un nouveau compte</a></li>
 		</ul>
 	</nav>
 	

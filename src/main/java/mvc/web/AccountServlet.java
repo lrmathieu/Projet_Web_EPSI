@@ -1,6 +1,7 @@
 package mvc.web;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -12,6 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import mvc.model.Account;
 import mvc.model.AccountDoesNotExistException;
 import mvc.model.AccountManager;
+import mvc.model.Transaction;
+import mvc.model.TransactionDoesNotExistException;
+import mvc.model.TransactionManager;
 
 @WebServlet("/account")
 public class AccountServlet extends HttpServlet {
@@ -20,16 +24,25 @@ public class AccountServlet extends HttpServlet {
 	
 	@EJB
 	private AccountManager accountManager;
+	@EJB
+	private TransactionManager transactionManager;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		List<Transaction> transactionsListByAccount;
+
 		try {
 			Account account = this.accountManager.getByNumber(req.getParameter("accountNumber"));
 			req.setAttribute("account", account);
+			transactionsListByAccount = this.transactionManager.getListTransactionsByAccount(req.getParameter("accountNumber"));
+            req.setAttribute("transactionsListByAccount", transactionsListByAccount);
 			req.getRequestDispatcher("/WEB-INF/jsp/account.jsp").forward(req, resp);
 		} catch (AccountDoesNotExistException e) {
 			log("Account does not exist", e);
 			resp.sendError(HttpServletResponse.SC_NOT_FOUND);
+		}catch (TransactionDoesNotExistException e) {
+            log("Aucune transaction a afficher", e);
+            req.setAttribute("error", "no.transactions");
 		}
 	}
 
