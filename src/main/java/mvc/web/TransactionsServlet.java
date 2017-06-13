@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import mvc.model.Account;
+import mvc.model.AccountDoesNotExistException;
+import mvc.model.AccountManager;
 import mvc.model.Amount;
 import mvc.model.Transaction;
 import mvc.model.TransactionManager;
@@ -19,10 +22,20 @@ private static final long serialVersionUID = 1L;
 	
 	@EJB
 	private TransactionManager transactionManager;
+	@EJB
+	private AccountManager accountManager;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		try {
+			Account account = this.accountManager.getByNumber(req.getParameter("accountNumber"));
+			req.setAttribute("account", account);
+		} catch (AccountDoesNotExistException e) {
+			log("Account does not exist", e);
+			resp.sendError(HttpServletResponse.SC_NOT_FOUND);
+		}
 		getServletContext().getRequestDispatcher("/WEB-INF/jsp/transaction.jsp").forward(req, resp);
+		
 	}
 
 	@Override
@@ -36,9 +49,9 @@ private static final long serialVersionUID = 1L;
 			String transactType = req.getParameter("transactionType");
 			Amount amountTrasact =new Amount(transactionBalanceInteger, transationBalanceFraction);
 			//Account account = accountManager.save(req.getParameter("accountName"), req.getParameter("accountNumber"), amount)
-			//String accountNumber = req.getParameter("accountNumber");
-			Transaction transaction =  transactionManager.saveTransaction(libelle, transactType, amountTrasact);
-			resp.sendRedirect(req.getContextPath() + "/displayTransactions");
+			String accountNumber = req.getParameter("accountNumber");
+			Transaction transaction =  transactionManager.saveTransaction(libelle, transactType, amountTrasact, accountNumber);
+			resp.sendRedirect(req.getContextPath() + "/account?accountNumber=" + transaction.getAccount().getNumber());
 
 			
 			//} catch (NumberFormatException nfe) {

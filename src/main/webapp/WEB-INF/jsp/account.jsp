@@ -8,7 +8,7 @@
 <title>Mon compte</title>
 </head>
 <body>
-	<h2>Details du compte</h2>
+	<h2>Details du compte ${account.number}</h2>
 
 	<section>
 		<c:out value="${account.name}"/><br/><br/>
@@ -48,7 +48,7 @@
 	<nav>
 		<ul>
 			<li><a href="<c:url value="/home"/>">Retour à l'acceuil</a></li>
-			<li><a href="<c:url value="/transactions"/>">Saisir une transaction</a></li>
+			<li><a href="<c:url value="/transactions?accountNumber=${account.number}"/>">Saisir une transaction</a></li>
 		</ul>
 	</nav>
 

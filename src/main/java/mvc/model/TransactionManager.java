@@ -12,15 +12,15 @@ public class TransactionManager {
 	@PersistenceContext(unitName="bankPersistenceUnit")
 	private EntityManager entityManager;
 	
-	public Transaction saveTransaction(String label, String type, Amount value) {//throws AccountAlreadyExistingException {
+	public Transaction saveTransaction(String label, String type, Amount value, String accountNumber) {//throws AccountAlreadyExistingException {
 		//try {
 			//getByNumber(accountNumber);
 		//	throw new AccountAlreadyExistingException();
 		//} catch (AccountDoesNotExistException e) {}
 		
 		//REQUETE POUR RECUPERER NUMERO DE COMPTE POUR TRANSACTION
-			Account selectedAccount = entityManager.createQuery("select a from Account a where a.id = :id", Account.class)
-			.setParameter("id", 1)
+			Account selectedAccount = entityManager.createQuery("select a from Account a where a.number = :accountNumber", Account.class)
+			.setParameter("accountNumber", accountNumber)
 			.getSingleResult();
 			Transaction newTransaction = new Transaction(label, type, value);
 			newTransaction.setAccount(selectedAccount);

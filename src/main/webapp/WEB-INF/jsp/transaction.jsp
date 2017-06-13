@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Ajout d'une recettte</title>
+<title>Ajout d'une transaction</title>
 </head>
 <body>
 <header>
-	<h2> Ajouter une recette</h2>
+	<h2> Ajouter une transaction sur le compte ${param['accountNumber']}</h2>
 </header>
 <%-- 
 <c:choose>
@@ -29,11 +29,13 @@
 	
 	<!-- <label>Date</label>
 	<input type="date" name="transactionDate"><br><br> -->
-	<label>Montant de la recette</label>
+	<label>Montant de la transaction</label>
 	<%-- <input name="recipe" value="<c:out value="${param['recipe']}"/>"><br><br> --%>
 	<input name="transactionBalanceInteger" value="<c:out value="${param['transactionBalanceInteger']}"/>">,
 	<input name="transationBalanceFraction" size="2" maxlength="2"> €<br/><br/>
 	<%-- value="<c:out value="${param['transationBalanceFraction']}" --%>
+	
+	<input name="accountNumber" type="hidden" value="<c:out value="${param['accountNumber']}"/>"><br><br>
 	
 	<button type="submit">Ajouter</button>
 </form>
