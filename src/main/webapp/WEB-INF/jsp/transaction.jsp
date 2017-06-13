@@ -29,7 +29,6 @@
 		<option value="<c:out value="Dépense"/>">Dépense</option>
 		<option value="<c:out value="Recette"/>">Recette</option>
 	</select><br><br>
-	<!--  <input name="transactionType" value="<c:out value="${param['transactionType']}"/>"><br><br> -->
 	
 	<!-- <label>Date</label>
 	<input type="date" name="transactionDate"><br><br> -->
