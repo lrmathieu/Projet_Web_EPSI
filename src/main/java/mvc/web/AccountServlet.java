@@ -34,9 +34,14 @@ public class AccountServlet extends HttpServlet {
 		try {
 			Account account = this.accountManager.getByNumber(req.getParameter("accountNumber"));
 			req.setAttribute("account", account);
+			
 			transactionsListByAccount = this.transactionManager.getListTransactionsByAccount(req.getParameter("accountNumber"));
             req.setAttribute("transactionsListByAccount", transactionsListByAccount);
-			req.getRequestDispatcher("/WEB-INF/jsp/account.jsp").forward(req, resp);
+            
+            Double accountBalance = this.transactionManager.getAccountBalance(req.getParameter("accountNumber"));
+            req.setAttribute("accountBalance", accountBalance);
+			
+            req.getRequestDispatcher("/WEB-INF/jsp/account.jsp").forward(req, resp);
 		} catch (AccountDoesNotExistException e) {
 			log("Account does not exist", e);
 			resp.sendError(HttpServletResponse.SC_NOT_FOUND);

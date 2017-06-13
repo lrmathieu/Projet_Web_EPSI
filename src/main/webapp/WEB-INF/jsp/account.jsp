@@ -39,10 +39,16 @@
 			</c:when>
 		</c:choose>
 		<tr>
+			<td colspan="3">Solde initial :</td>
+			<td><c:out value="${ account.balanceAmount }" /></td>
+		</tr>
+		<tr>
 			<td colspan="3">Total :</td>
-			<td><c:out value="" />&nbsp; <fmt:formatNumber type="currency"
-					value="${account.balanceAmount.valueWithFractionDigits}"
-					currencySymbol="${account.balanceAmount.currency.symbol}" /></td>
+			<td><c:out value="${ accountBalance }" />
+<%-- 			&nbsp; <fmt:formatNumber type="currency" --%>
+<%-- 					value="${account.balanceAmount.valueWithFractionDigits}" --%>
+<%-- 					currencySymbol="${account.balanceAmount.currency.symbol}" /> --%>
+					</td>
 		</tr>
 	</table>
 	<nav>
