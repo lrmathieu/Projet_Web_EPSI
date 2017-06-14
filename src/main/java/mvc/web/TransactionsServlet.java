@@ -1,6 +1,9 @@
 package mvc.web;
 
 import java.io.IOException;
+import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -43,15 +46,27 @@ private static final long serialVersionUID = 1L;
 		req.setCharacterEncoding("UTF-8");
 		
 		//try {			
-			String transactionBalanceInteger =req.getParameter("transactionBalanceInteger");
+			String transactionBalanceInteger = req.getParameter("transactionBalanceInteger");
 			String transationBalanceFraction = req.getParameter("transationBalanceFraction");
 			String libelle = req.getParameter("libbele");
 			String transactType = req.getParameter("transactionType");
-			Amount amountTrasact =new Amount(transactionBalanceInteger, transationBalanceFraction);
-			//Account account = accountManager.save(req.getParameter("accountName"), req.getParameter("accountNumber"), amount)
-			String accountNumber = req.getParameter("accountNumber");
-			Transaction transaction =  transactionManager.saveTransaction(libelle, transactType, amountTrasact, accountNumber);
-			resp.sendRedirect(req.getContextPath() + "/account?accountNumber=" + transaction.getAccount().getNumber());
+			 
+			
+			String dateTransaction = req.getParameter("transactionDate");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			Date dateJava;
+			
+			try {
+				dateJava = sdf.parse(dateTransaction);
+				Amount amountTrasact = new Amount(transactionBalanceInteger, transationBalanceFraction);
+				//Account account = accountManager.save(req.getParameter("accountName"), req.getParameter("accountNumber"), amount)
+				String accountNumber = req.getParameter("accountNumber");
+				Transaction transaction =  transactionManager.saveTransaction(dateJava, libelle, transactType, amountTrasact, accountNumber);
+				resp.sendRedirect(req.getContextPath() + "/account?accountNumber=" + transaction.getAccount().getNumber());
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 			
 			//} catch (NumberFormatException nfe) {

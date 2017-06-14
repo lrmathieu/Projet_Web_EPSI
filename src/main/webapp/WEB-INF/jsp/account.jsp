@@ -30,7 +30,7 @@
 			<c:when test="${ not empty transactionsListByAccount }">
 				<c:forEach items="${ transactionsListByAccount }" var="t">
 					<tr>
-						<td></td>
+						<td>${t.dateTransaction }</td>
 						<td>${ t.label }<br>
 						<td>${ t.transactionType }</td>
 						<td>${ t.value }</td>
