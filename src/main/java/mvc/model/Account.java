@@ -19,7 +19,7 @@ public class Account {
 	private String number;
 	@Embedded
 	private Amount balance;
-	@OneToMany
+	@OneToMany(mappedBy="account")
 	private List<Transaction> transactions;
 	
 	public Account(){
@@ -58,5 +58,18 @@ public class Account {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	public Double getTotal(){
+		Double sumTransactions = this.getBalanceAmount().getValueWithFractionDigits();
+		for(Transaction t: this.getTransactions()){
+			sumTransactions += t.getValue().getValueWithFractionDigits();
+		}
+		return sumTransactions;
+	}
+
+	//@OneToMany(mappedBy="account")
+	public List<Transaction> getTransactions() {
+		return this.transactions;
 	}
 }

@@ -36,7 +36,7 @@
 						<tr>
 							<td>${ a.name }<br>
 							<td>${ a.number }</td>
-							<td>${ a.balanceAmount }</td>
+							<td>${ a.total }</td>
 							<td><a
 								href="<c:url value="/account?accountNumber=${a.number}"/>">Consulter</a>
 							</td>
