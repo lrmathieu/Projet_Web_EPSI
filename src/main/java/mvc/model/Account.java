@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.PostLoad;
+import javax.persistence.Transient;
 
 @Entity
 public class Account {
@@ -21,6 +23,9 @@ public class Account {
 	private Amount balance;
 	@OneToMany(mappedBy="account")
 	private List<Transaction> transactions;
+	
+	@Transient
+	private double sumTransactions;
 	
 	public Account(){
 			
@@ -61,11 +66,15 @@ public class Account {
 	}
 	
 	public Double getTotal(){
-		Double sumTransactions = this.getBalanceAmount().getValueWithFractionDigits();
+		return this.sumTransactions;
+	}
+	
+	@PostLoad
+	protected void computeAmount() {
+		sumTransactions = this.getBalanceAmount().getValueWithFractionDigits();
 		for(Transaction t: this.getTransactions()){
 			sumTransactions += t.getValue().getValueWithFractionDigits();
 		}
-		return sumTransactions;
 	}
 
 	//@OneToMany(mappedBy="account")
