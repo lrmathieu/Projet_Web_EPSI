@@ -53,7 +53,7 @@
 	</table>
 	<nav>
 		<ul>
-			<li><a href="<c:url value="/home"/>">Retour à l'acceuil</a></li>
+			<li><a href="<c:url value="/home"/>">Retour à l'accueil</a></li>
 			<li><a href="<c:url value="/transactions?accountNumber=${account.number}"/>">Saisir une transaction</a></li>
 		</ul>
 	</nav>
