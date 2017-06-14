@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS Account (
 
 CREATE TABLE IF NOT EXISTS Transaction (
   id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  transactionDate DATE NOT NULL,
+  dateTransaction DATE NOT NULL,
   label VARCHAR(50) NOT NULL,
   transactionType VARCHAR(200) NOT NULL,
   value INT NOT NULL,
