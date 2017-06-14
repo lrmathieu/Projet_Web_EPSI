@@ -23,17 +23,6 @@ public class AccountManager {
 			return newAccount;
 		}
 	}
-	/*public Transaction saveTransaction(String label, String transactionType, Amount amount) {//throws AccountAlreadyExistingException {
-		//try {
-			//getByNumber(accountNumber);
-			//throw new AccountAlreadyExistingException();
-		//} catch (AccountDoesNotExistException e) {}
-			Transaction newTransaction = new Transaction(label, transactionType, amount);
-			entityManager.persist(newTransaction);
-			return newTransaction;
-		}*/
-
-	
 	
 	public Account getByNumber(String accountNumber) throws AccountDoesNotExistException {
 		try {
