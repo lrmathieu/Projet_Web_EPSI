@@ -1,5 +1,7 @@
 package mvc.model;
 
+import java.util.Date;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,6 +17,7 @@ public class Transaction{
 	private Long id;
 	private String transactionType;
 	private String label;
+	private Date dateTransaction;
 	
 	@Embedded
 	private Amount value;
@@ -26,7 +29,8 @@ public class Transaction{
 		
 	}
 	
-	public Transaction(String label, String transactionType, Amount value) {
+	public Transaction(Date dateTransaction2, String label, String transactionType, Amount value) {
+		this.setDateTransaction(dateTransaction2);
 		this.label=label;
 		this.transactionType=transactionType;
 		this.value=value;
@@ -68,4 +72,13 @@ public class Transaction{
 		this.account = account;
 	}
 
+	public Date getDateTransaction() {
+		
+		return dateTransaction;
+	}
+
+	public void setDateTransaction(Date dateTransaction) {
+		this.dateTransaction = dateTransaction;
+	}
+	
 }

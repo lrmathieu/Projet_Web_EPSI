@@ -1,5 +1,6 @@
 package mvc.model;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -12,7 +13,7 @@ public class TransactionManager {
 	@PersistenceContext(unitName = "bankPersistenceUnit")
 	private EntityManager entityManager;
 
-	public Transaction saveTransaction(String label, String type, Amount value, String accountNumber) {// throws
+	public Transaction saveTransaction(Date dateTransaction, String label, String type, Amount value, String accountNumber) {// throws
 																										// AccountAlreadyExistingException
 																										// {
 		// try {
@@ -27,7 +28,7 @@ public class TransactionManager {
 		if(type.equals("Dépense")){
 			value.changeSignOfAmount();
 		}
-		Transaction newTransaction = new Transaction(label, type, value);
+		Transaction newTransaction = new Transaction(dateTransaction, label, type, value);
 		newTransaction.setAccount(selectedAccount);
 		entityManager.persist(newTransaction);
 		return newTransaction;

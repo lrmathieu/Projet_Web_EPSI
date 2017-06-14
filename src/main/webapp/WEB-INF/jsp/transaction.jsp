@@ -30,8 +30,8 @@
 		<option value="<c:out value="Recette"/>">Recette</option>
 	</select><br><br>
 	
-	<!-- <label>Date</label>
-	<input type="date" name="transactionDate"><br><br> -->
+	 <label>Date</label>
+	<input type="date" name="transactionDate"><br><br> 
 	<label>Montant de la transaction</label>
 	<%-- <input name="recipe" value="<c:out value="${param['recipe']}"/>"><br><br> --%>
 	<input name="transactionBalanceInteger" value="<c:out value="${param['transactionBalanceInteger']}"/>">,
