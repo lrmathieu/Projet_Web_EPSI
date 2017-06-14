@@ -23,7 +23,7 @@
 				<th>Nom du compte</th>
 				<th>Numéro de compte</th>
 				<th>Solde actuel</th>
-				<th colspan="2">Action<th>
+				<th colspan="2">Action</th>
 			</tr>
 			<c:choose>
 				<c:when test="${ empty accountsList }">
@@ -39,9 +39,9 @@
 							<td>${ a.balanceAmount }</td>
 							<td><a
 								href="<c:url value="/account?accountNumber=${a.number}"/>">Consulter</a>
-							<td>
+							</td>
 							<td><a href="<c:url value="/home"/>">Supprimer</a>
-							<td>
+							</td>
 						</tr>
 					</c:forEach>
 				</c:when>

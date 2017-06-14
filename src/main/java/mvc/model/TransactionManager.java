@@ -24,6 +24,9 @@ public class TransactionManager {
 		Account selectedAccount = entityManager
 				.createQuery("select a from Account a where a.number = :accountNumber", Account.class)
 				.setParameter("accountNumber", accountNumber).getSingleResult();
+		if(type.equals("Dépense")){
+			value.changeSignOfAmount();
+		}
 		Transaction newTransaction = new Transaction(label, type, value);
 		newTransaction.setAccount(selectedAccount);
 		entityManager.persist(newTransaction);

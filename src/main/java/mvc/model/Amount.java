@@ -33,6 +33,12 @@ public class Amount {
 	public Currency getCurrency() {
 		return DEFAULT_CURRENCY;
 	}
+	
+	public Amount changeSignOfAmount(Amount this){
+		this.value = value * (-1);
+		return this;
+	}
+	
 	@Override
 	public String toString(){
 		return String.valueOf(this.getValueWithFractionDigits());
